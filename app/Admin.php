@@ -3,10 +3,10 @@
 namespace App;
 
 use App\Uuids\Uuids;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use MV\Notification\Models\Notification;
+use Note\Notification;
 
 class Admin extends Authenticatable
 {
@@ -42,10 +42,10 @@ class Admin extends Authenticatable
 
     /**
      * get admin notification
-     * @return HasMany
+     * @return MorphMany
      */
     public function notification()
     {
-        return $this->hasMany(Notification::class);
+        return $this->morphMany(Notification::class, 'notification');
     }
 }
