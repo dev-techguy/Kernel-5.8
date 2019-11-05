@@ -44,7 +44,7 @@
                                            class="form-control tableInput input-sm">
                                     <span class="input-group-append">
                     <button type="button" disabled class="btn btn-primary btn-flat"><span
-                            class="fa fa-search"></span></button>
+                                class="fa fa-search"></span></button>
                   </span>
                                 </div>
                             </div>
@@ -72,10 +72,10 @@
                                         <tr>
                                             <td class="mailbox-star">
                                                 <a href="{{ route('user.read.mailbox',[ 'id' => $latestMail->id]) }}"><i
-                                                        class="fa fa-envelope text-danger"></i></a>
+                                                            class="fa fa-envelope text-danger"></i></a>
                                             </td>
                                             <td class="mailbox-name"><a
-                                                    href="{{ route('user.read.mailbox',[ 'id' => $latestMail->id]) }}"><b>{{ $latestMail->subject }}</b></a>
+                                                        href="{{ route('user.read.mailbox',[ 'id' => $latestMail->id]) }}"><b>{{ $latestMail->subject }}</b></a>
                                             </td>
                                             <td class="mailbox-subject">{{ substr($latestMail->description, 0, 150) }}@if(strlen($latestMail->description) > 150)
                                                     ...@endif

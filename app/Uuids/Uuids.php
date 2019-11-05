@@ -6,11 +6,13 @@ namespace App\Uuids;
 
 use Webpatser\Uuid\Uuid;
 
-trait Uuids {
+trait Uuids
+{
     /**
      * Boot function from laravel.
      */
-    protected static function boot() {
+    protected static function boot()
+    {
         parent::boot();
 
         static::creating(function ($model) {

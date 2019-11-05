@@ -31,7 +31,7 @@
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"><a href="{{ route('user.profile') }}" class="btn btn-link"><span
-                                        class="fa fa-arrow-left"></span></a> Update Profile</h3>
+                                            class="fa fa-arrow-left"></span></a> Update Profile</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ward_id">New Ward <i
-                                                    class="text-primary">Optional</i></label>
+                                                        class="text-primary">Optional</i></label>
                                             <select name="ward_id" id="ward_id"
                                                     class="form-control @error('ward_id') is-invalid @enderror">
                                                 @foreach($wards as $ward)
@@ -96,7 +96,7 @@
 
                                         <div class="form-group">
                                             <label for="username">New Username <i
-                                                    class="text-primary">Optional</i></label>
+                                                        class="text-primary">Optional</i></label>
                                             <input type="text"
                                                    class="form-control  @error('username') is-invalid @enderror"
                                                    id="username" name="username"
@@ -125,7 +125,7 @@
 
                                         <div class="form-group">
                                             <label for="phoneNumber">New Phone Number <i
-                                                    class="text-primary">Optional</i></label>
+                                                        class="text-primary">Optional</i></label>
                                             <input type="text"
                                                    class="form-control  @error('phoneNumber') is-invalid @enderror"
                                                    id="phoneNumber" name="phoneNumber"
@@ -140,7 +140,7 @@
                                         <div class="form-group">
                                             <br>
                                             <button type="submit" class="btn btn-primary btn-block"><span
-                                                    class="fa-refresh fa"></span> Update Profile
+                                                        class="fa-refresh fa"></span> Update Profile
                                             </button>
                                         </div>
                                     </div>

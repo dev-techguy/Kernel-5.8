@@ -37,7 +37,7 @@
                             <i class="fa fa-shopping-bag"></i>
                         </div>
                         <a href="index.html#" class="small-box-footer">More info <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                                    class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -53,7 +53,7 @@
                             <i class="ion ion-stats-bars"></i>
                         </div>
                         <a href="index.html#" class="small-box-footer">More info <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                                    class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -69,7 +69,7 @@
                             <i class="ion ion-person-add"></i>
                         </div>
                         <a href="index.html#" class="small-box-footer">More info <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                                    class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -85,7 +85,7 @@
                             <i class="ion ion-pie-graph"></i>
                         </div>
                         <a href="index.html#" class="small-box-footer">More info <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                                    class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -140,7 +140,7 @@
                                     <i class="fa fa-comments"></i>
                                 </button>
                                 <button type="button" class="btn btn-tool" data-widget="remove"><i
-                                        class="fa fa-times"></i>
+                                            class="fa fa-times"></i>
                                 </button>
                             </div>
                         </div>

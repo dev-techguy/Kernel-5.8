@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\View\View;
 
-class LoginController extends Controller {
+class LoginController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -39,7 +40,8 @@ class LoginController extends Controller {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest')->except('logout');
     }
 
@@ -50,7 +52,8 @@ class LoginController extends Controller {
      *
      * @return Response
      */
-    public function authenticate(Request $request) {
+    public function authenticate(Request $request)
+    {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...
@@ -62,7 +65,8 @@ class LoginController extends Controller {
      * Show the page for logging in the admin
      * @return Factory|View
      */
-    public function getAdminLoginPage() {
+    public function getAdminLoginPage()
+    {
         return view('auth.admin.login');
     }
 
@@ -71,7 +75,8 @@ class LoginController extends Controller {
      * @return RedirectResponse
      * @throws Exception
      */
-    public function authenticateAdmin() {
+    public function authenticateAdmin()
+    {
         $this->validate(request(), [
             'email' => 'required',
             'password' => 'required',

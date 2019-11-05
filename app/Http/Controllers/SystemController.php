@@ -8,13 +8,15 @@ use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-class SystemController extends Controller {
+class SystemController extends Controller
+{
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest');
     }
 
@@ -23,7 +25,8 @@ class SystemController extends Controller {
      * @param $time
      * @return false|string
      */
-    public static function elapsedTime($time) {
+    public static function elapsedTime($time)
+    {
         return Carbon::parse($time)->diffForHumans();
     }
 
@@ -34,7 +37,8 @@ class SystemController extends Controller {
      * @param string $fileName
      * @throws Exception
      */
-    public static function log(array $data, string $channel, string $fileName) {
+    public static function log(array $data, string $channel, string $fileName)
+    {
         $file = storage_path('logs/' . $fileName . '.log');
 
         // finally, create a formatter

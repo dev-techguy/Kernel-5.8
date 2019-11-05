@@ -4,13 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProfileRequest extends FormRequest {
+class UpdateProfileRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -19,7 +21,8 @@ class UpdateProfileRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'phoneNumber' => ['nullable', 'numeric', 'digits_between:10,10', 'unique:users'],

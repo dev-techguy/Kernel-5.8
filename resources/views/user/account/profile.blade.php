@@ -114,7 +114,7 @@
                                             <div class="col-md-6 offset-4">
                                                 <h6 class="text-danger text-bold">
                                                     Last Login :: <span
-                                                        class="text-black-50">{{ date('F d, Y h:m a', strtotime(auth()->user()->updated_at)) }}</span>
+                                                            class="text-black-50">{{ date('F d, Y h:m a', strtotime(auth()->user()->updated_at)) }}</span>
                                                 </h6>
                                             </div>
                                         </div>

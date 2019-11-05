@@ -83,7 +83,7 @@
                                         <div class="form-group">
                                             <br>
                                             <button type="submit" class="btn btn-primary btn-block"><span
-                                                    class="fa-lock fa"></span> Update Password
+                                                        class="fa-lock fa"></span> Update Password
                                             </button>
                                         </div>
                                     </div>

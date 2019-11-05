@@ -24,7 +24,8 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class Kernel extends HttpKernel {
+class Kernel extends HttpKernel
+{
     /**
      * The application's global HTTP middleware stack.
      *

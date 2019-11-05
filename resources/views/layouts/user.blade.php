@@ -1,11 +1,11 @@
 <?php
 
 
-use MV\Notification\Mv;
+use Note\Note;
 
-$userLatestMails = Mv::latestNotifications();
+$userLatestMails = Note::latestNotifications('web', false);
 ?>
-    <!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -176,7 +176,7 @@ $userLatestMails = Mv::latestNotifications();
                             <i class="fa fa-inbox nav-icon"></i>
                             <p>Inbox
                                 <span
-                                    class="badge badge-danger right">{{ number_format(count($userLatestMails)) }}</span>
+                                        class="badge badge-danger right">{{ number_format(count($userLatestMails)) }}</span>
                             </p>
                         </a>
                     </li>

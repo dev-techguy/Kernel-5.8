@@ -5,20 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\RequestID;
 use App\Http\Requests\UpdateProfileRequest;
+use App\User;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use Note\Note;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -27,7 +31,8 @@ class HomeController extends Controller {
      *
      * @return Renderable
      */
-    public function index() {
+    public function index()
+    {
         return view('home');
     }
 
@@ -36,7 +41,8 @@ class HomeController extends Controller {
      * User profile
      * @return Factory|View
      */
-    public function userProfile() {
+    public function userProfile()
+    {
         return view('user.account.profile');
     }
 
@@ -44,10 +50,9 @@ class HomeController extends Controller {
      * Update Profile here
      * @return Factory|View
      */
-    public function updateProfilePage() {
-        return \view('user.account.update-profile', [
-            'wards' => Ward::query()->orderByDesc('name')->get(),
-        ]);
+    public function updateProfilePage()
+    {
+        return view('user.account.update-profile');
     }
 
     /**
@@ -56,7 +61,8 @@ class HomeController extends Controller {
      * @return RedirectResponse
      * @throws Exception
      */
-    public function updateProfile(UpdateProfileRequest $request) {
+    public function updateProfile(UpdateProfileRequest $request)
+    {
         $user = auth()->user();
 
         if (!empty($request->email)) {
@@ -69,7 +75,7 @@ class HomeController extends Controller {
 
         //update profile
         if ($user->update()) {
-            Mv::createSystemNotification(null, auth()->id(), 'Profile Update', 'Your profile has been updated');
+            Note::createSystemNotification(auth()->id(), User::class, 'Profile Update', 'Your profile has been updated');
             return redirect()->back()->with('success', 'Profile updated successfully');
         }
         return redirect()->back()->with('error', 'Failed to update profile.');
@@ -80,7 +86,8 @@ class HomeController extends Controller {
      * get the change password page
      * @return Factory|View
      */
-    public function passwordPage() {
+    public function passwordPage()
+    {
         return view('user.account.change_password');
     }
 
@@ -90,7 +97,8 @@ class HomeController extends Controller {
      * @return RedirectResponse
      * @throws Exception
      */
-    public function changePassword(ChangePasswordRequest $request) {
+    public function changePassword(ChangePasswordRequest $request)
+    {
         // Extract the request data.
         $password = $request->currentPassword;
         $newPassword = $request->newPassword;
@@ -116,7 +124,7 @@ class HomeController extends Controller {
         $user->password = bcrypt($newPassword);
         $user->update();
 
-        Mv::createSystemNotification(null, $user->id, 'Account Credentials Update', 'Your account credentials have been changed.');
+        Note::createSystemNotification(auth()->id(), User::class, 'Account Credentials Update', 'Your account credentials have been changed.');
 
         return redirect()->back()->with('success', 'You have successfully changed your password.');
     }
@@ -125,9 +133,10 @@ class HomeController extends Controller {
      * admin mails/notifications
      * @return Factory|View
      */
-    public function latestMailBox() {
+    public function latestMailBox()
+    {
         return view('user.mailbox.latestMail', [
-            'latestMails' => Mv::latestNotifications(),
+            'latestMails' => Note::latestNotifications('web'),
         ]);
     }
 
@@ -136,9 +145,10 @@ class HomeController extends Controller {
      * @param string $notification_id
      * @return Factory|View
      */
-    public function readMailBox(string $notification_id) {
+    public function readMailBox(string $notification_id)
+    {
         return view('user.mailbox.readMail', [
-            'fetchMail' => Mv::readNotification($notification_id),
+            'fetchMail' => Note::readNotification($notification_id, 'web'),
         ]);
     }
 
@@ -147,8 +157,9 @@ class HomeController extends Controller {
      * @param RequestID $request
      * @return RedirectResponse
      */
-    public function deleteSingleMail(RequestID $request) {
-        if (Mv::deleteSingleNotification($request->id))
+    public function deleteSingleMail(RequestID $request)
+    {
+        if (Note::deleteSingleNotification($request->id, 'web'))
             return redirect()->route('user.latest.mailbox')->with('success', 'Mail deleted successfully.');
         return redirect()->back()->with('error', 'Failed to delete notification.');
     }
@@ -157,9 +168,10 @@ class HomeController extends Controller {
      * fetch all notifications
      * @return Factory|View
      */
-    public function allMailBox() {
+    public function allMailBox()
+    {
         return view('user.mailbox.allMail', [
-            'allMails' => Mv::allNotifications(),
+            'allMails' => Note::allNotifications('web'),
         ]);
     }
 
@@ -167,8 +179,9 @@ class HomeController extends Controller {
      * delete all mails
      * @return RedirectResponse
      */
-    public function deleteAllMails() {
-        if (Mv::deleteAllNotifications())
+    public function deleteAllMails()
+    {
+        if (Note::deleteAllNotifications('web'))
             return redirect()->route('user.latest.mailbox')->with('success', 'Notification(s) deleted successfully.');
         return redirect()->route('user.latest.mailbox')->with('error', 'Failed to delete notification(s).');
     }
@@ -178,7 +191,8 @@ class HomeController extends Controller {
      * logout user
      * @return Factory|View
      */
-    public function logout() {
+    public function logout()
+    {
         auth()->logout();
         session()->flush();
         return redirect()->route('login');

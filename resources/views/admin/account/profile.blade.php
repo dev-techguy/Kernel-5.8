@@ -73,7 +73,7 @@
                                                     <div class="col-md-6">
                                                         <hr>
                                                         <h6 class="text-danger text-bold">Last Login :: <span
-                                                                class="text-black-50">{{ date('F d, Y h:m a', strtotime(auth('admin')->user()->updated_at)) }}</span>
+                                                                    class="text-black-50">{{ date('F d, Y h:m a', strtotime(auth('admin')->user()->updated_at)) }}</span>
                                                         </h6>
                                                         <hr>
                                                     </div>

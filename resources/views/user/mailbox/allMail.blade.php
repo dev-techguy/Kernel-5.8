@@ -44,7 +44,7 @@
                                            class="form-control tableInput input-sm">
                                     <span class="input-group-append">
                     <button type="button" disabled class="btn btn-primary btn-flat"><span
-                            class="fa fa-search"></span></button>
+                                class="fa fa-search"></span></button>
                   </span>
                                 </div>
                             </div>
@@ -73,14 +73,14 @@
                                             <td class="mailbox-star">
                                                 @if($allMail->status == 0)
                                                     <a href="{{ route('user.read.mailbox',[ 'id' => $allMail->id]) }}"><i
-                                                            class="fa fa-envelope text-danger"></i></a>
+                                                                class="fa fa-envelope text-danger"></i></a>
                                                 @else
                                                     <a href="{{ route('user.read.mailbox',[ 'id' => $allMail->id]) }}"><i
-                                                            class="fa fa-envelope-open text-success"></i></a>
+                                                                class="fa fa-envelope-open text-success"></i></a>
                                                 @endif
                                             </td>
                                             <td class="mailbox-name"><a
-                                                    href="{{ route('user.read.mailbox',[ 'id' => $allMail->id]) }}"><b>{{ $allMail->subject }}</b></a>
+                                                        href="{{ route('user.read.mailbox',[ 'id' => $allMail->id]) }}"><b>{{ $allMail->subject }}</b></a>
                                             </td>
                                             <td class="mailbox-subject">{{ substr($allMail->description, 0, 150) }}@if(strlen($allMail->description) > 150)
                                                     ...@endif

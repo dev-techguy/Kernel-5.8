@@ -5,14 +5,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
 
-class AdminTableSeeder extends Seeder {
+class AdminTableSeeder extends Seeder
+{
     /**
      * Run the database seeds.
      *
      * @return void
      * @throws Exception
      */
-    public function run() {
+    public function run()
+    {
         //create custom users here
         $demoAdmins = [
             [

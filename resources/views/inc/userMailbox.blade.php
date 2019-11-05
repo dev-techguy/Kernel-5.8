@@ -1,10 +1,10 @@
 <?php
 
 
-use MV\Notification\Mv;
+use Note\Note;
 
-$userLatestMails = Mv::latestNotifications();
-$userAllMails = Mv::allNotifications();
+$userLatestMails = Note::latestNotifications('web', false);
+$userAllMails = Note::allNotifications('web', false);
 ?>
 <div class="card">
     <div class="card-header">

@@ -8,7 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use MV\Notification\Models\Notification;
 
-class Admin extends Authenticatable {
+class Admin extends Authenticatable
+{
     use Notifiable, Uuids;
 
     /**
@@ -43,7 +44,8 @@ class Admin extends Authenticatable {
      * get admin notification
      * @return HasMany
      */
-    public function notification() {
+    public function notification()
+    {
         return $this->hasMany(Notification::class);
     }
 }

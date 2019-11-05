@@ -42,7 +42,7 @@
                             <h5><strong>{{ $fetchMail->subject }}</strong></h5>
                             <h6>
                                 <span
-                                    class="mailbox-read-time float-right">{{ date('F d, Y h:i a', strtotime($fetchMail->created_at)) }}</span>
+                                        class="mailbox-read-time float-right">{{ date('F d, Y h:i a', strtotime($fetchMail->created_at)) }}</span>
                             </h6>
                         </div>
                         <div class="mailbox-read-message">

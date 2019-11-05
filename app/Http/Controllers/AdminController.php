@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Note\Note;
 
-class AdminController extends Controller {
+class AdminController extends Controller
+{
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth:admin');
     }
 
@@ -25,7 +27,8 @@ class AdminController extends Controller {
      * get admin dashboard
      * @return Factory|View
      */
-    public function adminDashBoard() {
+    public function adminDashBoard()
+    {
         return view('admin.home');
     }
 
@@ -34,7 +37,8 @@ class AdminController extends Controller {
      * get admin profile
      * @return Factory|View
      */
-    public function adminProfile() {
+    public function adminProfile()
+    {
         return view('admin.account.profile');
     }
 
@@ -42,7 +46,8 @@ class AdminController extends Controller {
      * get the change password page
      * @return Factory|View
      */
-    public function passwordPage() {
+    public function passwordPage()
+    {
         return view('admin.account.change_password');
     }
 
@@ -52,7 +57,8 @@ class AdminController extends Controller {
      * @return RedirectResponse
      * @throws Exception
      */
-    public function changePassword(ChangePasswordRequest $request) {
+    public function changePassword(ChangePasswordRequest $request)
+    {
         // Extract the request data.
         $password = $request->currentPassword;
         $newPassword = $request->newPassword;
@@ -94,7 +100,8 @@ class AdminController extends Controller {
      * admin mails/notifications
      * @return Factory|View
      */
-    public function latestMailBox() {
+    public function latestMailBox()
+    {
         return view('admin.mailbox.latestMail', [
             'latestMails' => Note::latestNotifications('admin'),
         ]);
@@ -105,7 +112,8 @@ class AdminController extends Controller {
      * @param string $notification_id
      * @return Factory|View
      */
-    public function readMailBox(string $notification_id) {
+    public function readMailBox(string $notification_id)
+    {
         return view('admin.mailbox.readMail', [
             'fetchMail' => Note::readNotification($notification_id, 'admin'),
         ]);
@@ -116,7 +124,8 @@ class AdminController extends Controller {
      * @param RequestID $request
      * @return RedirectResponse
      */
-    public function deleteSingleMail(RequestID $request) {
+    public function deleteSingleMail(RequestID $request)
+    {
         if (Note::deleteSingleNotification($request->id, 'admin'))
             return redirect()->route('admin.latest.mailbox')->with('success', 'Mail deleted successfully.');
         return redirect()->back()->with('error', 'Failed to delete notification.');
@@ -126,7 +135,8 @@ class AdminController extends Controller {
      * fetch all notifications
      * @return Factory|View
      */
-    public function allMailBox() {
+    public function allMailBox()
+    {
         return view('admin.mailbox.allMail', [
             'allMails' => Note::allNotifications('admin'),
         ]);
@@ -136,7 +146,8 @@ class AdminController extends Controller {
      * delete all mails
      * @return RedirectResponse
      */
-    public function deleteAllMails() {
+    public function deleteAllMails()
+    {
         if (Note::deleteAllNotifications('admin'))
             return redirect()->route('admin.latest.mailbox')->with('success', 'Notification(s) deleted successfully.');
         return redirect()->route('admin.latest.mailbox')->with('error', 'Failed to delete notification(s).');
@@ -146,7 +157,8 @@ class AdminController extends Controller {
      * logout admin
      * @return Factory|View
      */
-    public function logout() {
+    public function logout()
+    {
         auth('admin')->logout();
         session()->flush();
         return redirect()->route('admin.login');

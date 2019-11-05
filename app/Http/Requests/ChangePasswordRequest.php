@@ -9,13 +9,15 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property mixed newPassword
  * @property mixed confirmPassword
  */
-class ChangePasswordRequest extends FormRequest {
+class ChangePasswordRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -24,7 +26,8 @@ class ChangePasswordRequest extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'currentPassword' => ['required'],
             'newPassword' => ['required', 'min:8', 'string'],
